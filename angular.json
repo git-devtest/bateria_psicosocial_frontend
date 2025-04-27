@@ -5,7 +5,11 @@
   "projects": {
     "bateria_psicosocial_frontend": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+        "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -92,5 +96,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "84d72047-01bf-4f2e-9058-d35905cbfe67"
   }
 }

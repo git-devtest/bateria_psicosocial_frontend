@@ -1,0 +1,26 @@
+<h2>Listado de empresas</h2>
+<table class="tabla">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Nit</th>
+      <th>Email</th>
+      <th>Teléfono</th>
+      <th>Dirección</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of empresas">
+      <td>{{ e.nombre }}</td>
+      <td>{{ e.nit }}</td>
+      <td>{{ e.email }}</td>
+      <td>{{ e.telefono }}</td>
+      <td>{{ e.direccion }}</td>
+      <td>
+        <button class="btn btn-sm btn-primary">Editar</button>
+        <button class="btn btn-sm btn-danger">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

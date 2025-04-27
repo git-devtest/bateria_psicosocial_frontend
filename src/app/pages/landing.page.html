@@ -1,0 +1,48 @@
+<div class="layout-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <span class="user-info">Bienvenido, {{ usuario }}</span>
+      <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
+    </header>
+  
+    <!-- Contenido principal con sidebar y main -->
+    <div class="main-content">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li>
+              <a routerLink="/dashboard" routerLinkActive="activo">🏠 Inicio</a>
+            </li>
+      
+            <li>
+              <span class="section-title">👥 Usuarios</span>
+              <ul>
+                <li><a routerLink="/dashboard/usuarios" routerLinkActive="activo">Listado de usuarios</a></li>
+              </ul>
+            </li>
+      
+            <li>
+              <span class="section-title">🏢 Empresas</span>
+              <ul>
+                <li><a routerLink="/dashboard/empresas" routerLinkActive="activo">Listado de empresas</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <!-- Sidebar end -->      
+
+      <!-- Main dynamic content -->
+      <main class="content-area">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 - Aplicación Batería Psicosocial</p>
+      <p>Contacto: contacto at psicosocialapp dot test</p>
+    </footer>
+  </div>
+  

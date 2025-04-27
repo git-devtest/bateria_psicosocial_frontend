@@ -1,0 +1,25 @@
+<div class="login-container">
+  <!-- Sección izquierda -->
+  <section class="info-section">
+    <h1>Batería de Riesgo Psicosocial</h1>
+    <p>Cumple con la normativa vigente.</p>
+    <p>La información es confidencial y se usará para fines estadísticos.</p>
+  </section>
+
+  <!-- Formulario de login -->
+  <section class="form-section">
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Iniciar sesión</h2>
+
+      <label for="email">Correo electrónico</label>
+      <input id="email" type="email" formControlName="email" [class.input-error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" />
+
+      <label for="contrasena">Contraseña</label>
+      <input id="contrasena" type="password" formControlName="contrasena" [class.input-error]="loginForm.get('contrasena')?.invalid && loginForm.get('contrasena')?.touched" />
+
+      <div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
+
+      <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+    </form>
+  </section>
+</div>
