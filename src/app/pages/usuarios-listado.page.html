@@ -1,4 +1,47 @@
 <h2>Listado de usuarios</h2>
+
+<form (ngSubmit)="guardarUsuario()" #usuarioForm="ngForm" class="mb-4 border p-3 rounded bg-light">
+  <h5>{{ usuarioSeleccionado?.id ? 'Editar Usuario' : 'Crear Usuario' }}</h5>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <label class="form-label">Nombre</label>
+      <input type="text" [(ngModel)]="usuarioSeleccionado.nombre" name="nombre" class="form-control" required />
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Email</label>
+      <input type="email" [(ngModel)]="usuarioSeleccionado.email" name="email" class="form-control" required />
+    </div>
+    <div class="col-md-4" *ngIf="!usuarioSeleccionado?.id">
+      <label class="form-label">Contraseña</label>
+      <input type="password" [(ngModel)]="usuarioSeleccionado.contrasena" name="contrasena" class="form-control" required />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Rol</label>
+      <select [(ngModel)]="usuarioSeleccionado.rol_id" name="rol_id" class="form-select" required>
+        <option [ngValue]="''" disabled>Seleccione un rol</option>
+        <option *ngFor="let rol of roles" [ngValue]="rol.id">{{ rol.nombre }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-5">
+      <label class="form-label">Empresa</label>
+      <select [(ngModel)]="usuarioSeleccionado.empresa_id" name="empresa_id" class="form-select" required>
+        <option [ngValue]="''" disabled>Seleccione una empresa</option>
+        <option *ngFor="let empresa of empresas" [ngValue]="empresa.id">{{ empresa.nombre }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mt-3 d-flex justify-content-between">
+    <button type="submit" class="btn btn-success" [disabled]="usuarioForm.invalid">
+      {{ usuarioSeleccionado?.id ? 'Actualizar' : 'Crear' }}
+    </button>
+    <button type="button" (click)="cancelarEdicion()" class="btn btn-secondary">Cancelar</button>
+  </div>
+</form>
+
 <table class="tabla">
   <thead>
     <tr>
@@ -6,6 +49,7 @@
       <th>Email</th>
       <th>Rol</th>
       <th>Empresa</th>
+      <th>Acciones</th> 
     </tr>
   </thead>
   <tbody>
@@ -14,6 +58,10 @@
       <td>{{ u.email }}</td>
       <td>{{ u.rol_id }}</td>
       <td>{{ u.empresa_id }}</td>
+      <td>
+        <button (click)="editarUsuario(u)" class="btn btn-sm btn-warning me-2">Editar</button>
+        <button (click)="eliminarUsuario(u)" class="btn btn-sm btn-danger">Eliminar</button>
+      </td>
     </tr>
   </tbody>
 </table>
