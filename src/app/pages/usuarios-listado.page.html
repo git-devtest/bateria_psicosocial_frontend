@@ -60,7 +60,7 @@
       <td>{{ u.empresa_id }}</td>
       <td>
         <button (click)="editarUsuario(u)" class="btn btn-sm btn-warning me-2">Editar</button>
-        <button (click)="eliminarUsuario(u)" class="btn btn-sm btn-danger">Eliminar</button>
+        <button (click)="eliminarUsuario(u.id)" class="btn btn-sm btn-danger">Eliminar</button>
       </td>
     </tr>
   </tbody>

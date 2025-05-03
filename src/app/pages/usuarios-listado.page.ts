@@ -89,12 +89,14 @@ export class UsuariosListadoPage {
   }
 
   eliminarUsuario(id: number) {
+    console.log(`Eliminar usuario con ID: ${id}`);
     if (!confirm('¿Estás seguro de que deseas eliminar este usuario?')) return;
   
     this.http.delete(`${environment.apiUrl}/usuarios/${id}`).subscribe({
       next: () => {
         this.empresas = this.empresas.filter(e => e.id !== id);
         console.log(`✅ Usuario con ID ${id} eliminado`);
+        this.obtenerUsuarios(); // Actualiza la lista de usuarios después de eliminar
       },
       error: err => console.error('❌ Error al eliminar usuario:', err),
     });
