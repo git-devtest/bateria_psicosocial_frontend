@@ -56,7 +56,7 @@
       <td>{{ e.direccion }}</td>
       <td>
         <button (click)="editarEmpresa(e)" class="btn btn-sm btn-warning me-2">Editar</button>
-        <button (click)="eliminarEmpresa(e)" class="btn btn-sm btn-danger">Eliminar</button>
+        <button (click)="eliminarEmpresa(e.id)" class="btn btn-sm btn-danger">Eliminar</button>
       </td>
     </tr>
   </tbody>
