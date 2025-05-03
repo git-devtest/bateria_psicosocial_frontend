@@ -25,6 +25,8 @@ export class LandingPage {
   }
 
   logout() {
+    console.log('Cerrando sesión...');
+    console.log('Token eliminado');
     localStorage.removeItem('token');
     this.router.navigate(['/']);
   }
