@@ -25,11 +25,12 @@ export class CambiarContrasenaComponent {
     this.error = '';
 
     if (this.nueva !== this.confirmar) {
+      console.log(this.nueva, this.confirmar);
       this.error = 'Las contraseñas no coinciden';
       return;
     }
 
-    this.http.post(`${environment.apiUrl}/usuarios/cambiar-contrasena`, {
+    this.http.put(`${environment.apiUrl}/usuarios/cambiar-contrasena`, {
       actual: this.actual,
       nueva: this.nueva
     }).subscribe({
