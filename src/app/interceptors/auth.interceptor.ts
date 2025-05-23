@@ -13,8 +13,7 @@ import { catchError } from 'rxjs/operators';
 export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-    console.log('✅ Interceptor ejecutado. Token:', token);
-
+    
     let reqClonado = req;
 
     if (token) {
