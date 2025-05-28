@@ -15,6 +15,7 @@ export const routes: Routes = [
       { path: '', loadComponent: () => import('./pages/home.page').then(m => m.HomePage) },
       { path: 'usuarios', loadComponent: () => import('./pages/usuarios-listado.page').then(m => m.UsuariosListadoPage) },
       { path: 'empresas', loadComponent: () => import('./pages/empresas-listado.page').then(m => m.EmpresasListadoPage) },
+      { path: 'bateria/datos-generales', loadComponent: () => import('./pages/bateria-datos-generales.page').then(m => m.BateriaDatosGeneralesPage) },
       { path: 'perfil/cambiar-contrasena', component: CambiarContrasenaComponent }
     ]
   }

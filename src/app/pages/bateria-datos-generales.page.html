@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <h5>Ficha de Datos Generales</h5>
+
+  <form (ngSubmit)="guardarDatos()" #form="ngForm" class="border p-4 rounded bg-light">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Ciudad del trabajo</label>
+          <input type="text" class="form-control" [(ngModel)]="datos.ciudad_trabajo" name="ciudad_trabajo" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Departamento del trabajo</label>
+          <input type="text" class="form-control" [(ngModel)]="datos.depto_trabajo" name="depto_trabajo" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Años en la empresa (&lt; 1 año)</label>
+          <input type="number" class="form-control" [(ngModel)]="datos.anios_empresa_menos_1" name="anios_empresa_menos_1" min="0" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Años en la empresa (&gt;= 1 año)</label>
+          <input type="number" class="form-control" [(ngModel)]="datos.anios_empresa_mas_1" name="anios_empresa_mas_1" min="0" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Cargo actual</label>
+          <input type="text" class="form-control" [(ngModel)]="datos.cargo_actual" name="cargo_actual" required>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Tipo de cargo</label>
+          <select class="form-select" [(ngModel)]="datos.tipo_cargo_id" name="tipo_cargo_id" required>
+            <option [ngValue]="''">Seleccione...</option>
+            <option *ngFor="let cargo of tiposCargo" [value]="cargo.id">{{ cargo.cargo }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Área o sección</label>
+          <input type="text" class="form-control" [(ngModel)]="datos.nombre_area_seccion" name="nombre_area_seccion" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Tipo de contrato</label>
+          <select class="form-select" [(ngModel)]="datos.tipo_contrato_id" name="tipo_contrato_id" required>
+            <option [ngValue]="">Seleccione...</option>
+            <option *ngFor="let contrato of tiposContrato" [value]="contrato.id">{{ contrato.contrato }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Horas diarias</label>
+          <input type="number" class="form-control" [(ngModel)]="datos.horas_diarias" name="horas_diarias" min="1" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Tipo de salario</label>
+          <select class="form-select" [(ngModel)]="datos.tipo_salario_id" name="tipo_salario_id" required>
+            <option [ngValue]="">Seleccione...</option>
+            <option *ngFor="let salario of tiposSalario" [value]="salario.id">{{ salario.salario }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }}</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="form.invalid">Guardar y continuar</button>
+  </form>
+</div>
